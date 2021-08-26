@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Upcoming Events!</h1>
+
+    {% for event in events %}
+    <div>
+        <p>
+            {{ event.date }}: {{ event.name }}, Capacity: {{ event.guest_number }}, Located in the {{ event.room_location }}. {{ event.description }}
+        </p>
+    </div>
+    {% endfor %}
+    <form action="/events" method="post">
+        <label for="date">Date</label>
+        <input type="text" name="date" id="date">
+
+        <label for="event">Event Name</label>
+        <input type="text" name="event" id="event">
+
+        <label for="guest_number">Number of Guests</label>
+        <input type="text" name="guest_number" id="guest_number">
+
+        <label for="room_location">Location</label>
+        <input type="text" name="room_location" id="room_location">
+
+        <label for="description">Description</label>
+        <textarea name="description" cols="30" rows="2" id="description"></textarea>
+
+        <input type="submit" value="Add Event">
+{% endblock content %}
